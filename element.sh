@@ -30,3 +30,13 @@ else
   ")
 fi
 
+# Check if element was found.
+if [[ -z $element ]]; then
+  echo "I could not find that element in the database."
+else
+  # Parse the element information.
+  IFS="|" read atomic_number name symbol type mass melting_point boiling_point <<< "$element"
+
+  # Output the required information.
+  echo "The element with atomic number $atomic_number is $name ($symbol). It's a $type, with a mass of $mass amu. $name has a melting point of $melting_point celsius and a boiling point of $boiling_point celsius."
+fi
